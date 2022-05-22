@@ -12,7 +12,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/arc_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_160sdp"
+        android:layout_height="@dimen/_260sdp"
         app:arc_cropCurve="cropConvex"
         app:arc_height="48dp"
         app:arc_position="bottom">
@@ -25,48 +25,66 @@
 
     </xyz.sahildave.arclayout.ArcLayout>
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_250sdp"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:src="@drawable/shopping" />
-
-    <androidx.cardview.widget.CardView
+    <TextView
+        android:id="@+id/tvt_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/popsem"
+        android:text="Halo, Selamat datang"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_11sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        />
+    <TextView
+        android:id="@+id/tvt_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/popsem"
+        android:text="Temukan dan scan QR Code"
+        android:layout_below="@id/tvt_1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_13sdp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_275sdp"
         app:cardUseCompatPadding="true"
-        android:layout_below="@id/icon"
         android:foregroundGravity="center"
-        android:elevation="@dimen/_10sdp"
+        android:elevation="@dimen/_20sdp"
+        android:padding="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginRight="@dimen/_16sdp"
         app:cardCornerRadius="@dimen/_20sdp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_40sdp"
-        android:onClick="scan"
-
+        android:layout_marginTop="@dimen/_90sdp"
 
         >
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_80sdp"
+                android:layout_height="@dimen/_150sdp"
                 android:padding="@dimen/_5sdp"
-                android:src="@drawable/scan" />
+                android:layout_marginTop="@dimen/_30sdp"
+                android:src="@drawable/qr_code2" />
 
-            <TextView
-                android:layout_width="match_parent"
+            <Button
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scan QR CODE"
-                android:fontFamily="@font/popsem"
-                android:gravity="center"
+                android:text="Scan QR Code"
+                android:background="@drawable/bg_btn"
+                android:layout_gravity="center"
                 android:textSize="@dimen/_9sdp"
-                android:textColor="@color/main"
+                android:onClick="scan"
+                android:layout_marginTop="@dimen/_10sdp"
                 />
 
 
@@ -85,12 +103,12 @@
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_25sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_gravity="bottom"
             android:backgroundTint="@color/main"
             app:fabAlignmentMode="center"
-            app:fabCradleMargin="@dimen/_10sdp"
-            app:fabCradleVerticalOffset="@dimen/_10sdp"
+            app:fabCradleMargin="@dimen/_8sdp"
+            app:fabCradleVerticalOffset="@dimen/_5sdp"
             app:hideOnScroll="true" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

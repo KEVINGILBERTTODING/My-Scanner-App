@@ -43,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         scan=findViewById(R.id.btn_scan);
 
+        // Mengatur warna tint fab
+
+        scan.setColorFilter(getResources().getColor(R.color.main));
+
+
+
+        // Fungsi saat floataction button di klik
 
         scan.setOnClickListener(new View.OnClickListener() {
             @Override
