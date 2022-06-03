@@ -9,6 +9,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,45 +37,44 @@ public class MainActivity extends AppCompatActivity {
     private InterfaceBarang interfaceBarang;
     SearchView searchView;
     RecyclerView recyclerView;
-    private SwipeRefreshLayout swipeRefreshLayout;
     FloatingActionButton fabAdd;
+    private ImageButton btnBack;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Fungsi untuk menyembunyikan navbar
-
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
-
         setContentView(R.layout.activity_main);
 
+        // Method hidenavbar
 
-        fabAdd = findViewById(R.id.btn_add);
-        recyclerView    =   findViewById(R.id.rcylrBarang);
+        hideNavbar();
 
+        // Method initilize
+
+        initilize();
 
         // Mengatur warna tint fab
 
         fabAdd.setColorFilter(getResources().getColor(R.color.white));
+
+        // Method saat dilakukan refresh
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshItem();
+            }
+        });
 
 
         layoutManager= new LinearLayoutManager(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-
         interfaceBarang= DataApi.getClient().create (InterfaceBarang.class);
         tampilkanData();
 
-
-        // Inisialisasi searchview
-
-        searchView = findViewById(R.id.search_barr);
-        searchView.clearFocus();
 
         // Fungsi saat memasukkan kata ke dalam searchview
 
@@ -92,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
 
         fabAdd.setOnClickListener(view -> {
             startActivity(new Intent(MainActivity.this, TambahBarang.class));
+        });
+
+        btnBack.setOnClickListener(view -> {
+            startActivity(new Intent(MainActivity.this, ScanQrCode.class));
         });
 
 
@@ -126,8 +131,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void refreshItem() {
+        tampilkanData();
+    }
 
-
+    // Method untuk memanggi data json
 
     private void tampilkanData() {
         Call<List<BarangModel>> call = interfaceBarang.getBarang();
@@ -140,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 barangModelList = response.body();
                 barangAdapter= new BarangAdapter(MainActivity.this, barangModelList);
                 recyclerView.setAdapter(barangAdapter);
+                mSwipeRefreshLayout.setRefreshing(false);
             }
 
 
@@ -149,11 +158,25 @@ public class MainActivity extends AppCompatActivity {
                 // Menampilkan toast saat no connection
 
                 Toast.makeText(MainActivity.this, "No connection, please try again", Toast.LENGTH_LONG).show();
+                mSwipeRefreshLayout.setRefreshing(false);
 
-
-//                Toast.makeText(MainActivity.this, "Error : "+ t.toString(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void hideNavbar() {
+
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
+    private void initilize() {
+        fabAdd              =   findViewById(R.id.btn_add);
+        recyclerView        =   findViewById(R.id.rcylrBarang);
+        btnBack             =   findViewById(R.id.btnBack2);
+        mSwipeRefreshLayout =   findViewById(R.id.swipeRefresh);
+        searchView          = findViewById(R.id.search_barr);
     }
 
 

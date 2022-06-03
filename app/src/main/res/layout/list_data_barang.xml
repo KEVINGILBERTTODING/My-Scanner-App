@@ -46,11 +46,11 @@
                     android:textSize="@dimen/_11sdp"/>
 
                 <TextView
-                    android:id="@+id/tv_kdbrg"
+                    android:id="@+id/tv_harga"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="B0001"
+                    android:text="5.0000"
                     android:fontFamily="@font/popmed"
                     android:textSize="@dimen/_10sdp" />
 
@@ -61,13 +61,13 @@
 
 
         <TextView
-            android:id="@+id/tv_hrgbrg"
+            android:id="@+id/tv_kdbrg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_weight="1"
             android:fontFamily="@font/popmed"
-            android:text="5000"
+            android:text="B0001"
             android:textSize="@dimen/_10sdp" />
 
 

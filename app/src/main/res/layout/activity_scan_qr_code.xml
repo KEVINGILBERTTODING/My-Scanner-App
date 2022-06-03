@@ -12,7 +12,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/arc_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_260sdp"
+        android:layout_height="@dimen/_200sdp"
         app:arc_cropCurve="cropConvex"
         app:arc_height="48dp"
         app:arc_position="bottom">
@@ -51,8 +51,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
-        android:layout_width="@dimen/_300sdp"
-        android:layout_height="@dimen/_275sdp"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
         app:cardUseCompatPadding="true"
         android:foregroundGravity="center"
         android:elevation="@dimen/_20sdp"
@@ -72,17 +72,17 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_150sdp"
+                android:layout_height="@dimen/_100sdp"
                 android:padding="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:src="@drawable/qr_code2" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_scannow"
-
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scan QR Code"
+                android:layout_height="@dimen/_30sdp"
+                android:text="Scan"
+                android:fontFamily="@font/popsem"
                 android:background="@drawable/bg_btn"
                 android:layout_gravity="center"
                 android:textSize="@dimen/_9sdp"
@@ -105,11 +105,12 @@
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_height="@dimen/_20sdp"
             android:layout_gravity="bottom"
             android:backgroundTint="@color/main"
             app:fabAlignmentMode="center"
-            app:fabCradleMargin="@dimen/_8sdp"
+            app:fabCradleMargin="@dimen/_2sdp"
+            app:fabAnimationMode="scale"
             app:fabCradleVerticalOffset="@dimen/_5sdp"
             app:hideOnScroll="true" />
 
@@ -117,8 +118,9 @@
             android:id="@+id/btn_scan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_scanner"
-            android:tint="@color/white"
+            android:src="@drawable/noto_package"
+            app:tint="@null"
+            app:fabSize="auto"
             app:backgroundTint="@color/white"
             app:layout_anchor="@id/bottomAppBar" />
 

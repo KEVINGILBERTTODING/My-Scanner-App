@@ -32,21 +32,21 @@
                     <ImageButton
                         android:id="@+id/btnBack"
                         android:layout_width="@dimen/_13sdp"
-                        android:onClick="btnback"
                         android:layout_height="@dimen/_13sdp"
                         android:layout_marginTop="@dimen/_15sdp"
-                        android:background="@drawable/ic_btnback" />
+                        android:background="@drawable/ic_btnback"
+                        android:onClick="btnback" />
 
                     <TextView
                         android:id="@+id/tvTitle2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/btnBack"
-                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:fontFamily="@font/popsem"
                         android:text="Masukkan data barang"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_11sdp" />
+                        android:textSize="@dimen/_14sdp" />
 
                 </RelativeLayout>
             </RelativeLayout>

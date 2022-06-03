@@ -24,22 +24,30 @@
                 android:layout_marginLeft="@dimen/_16sdp"
                 android:layout_marginRight="@dimen/_16sdp"
                 >
+                <ImageButton
+                    android:id="@+id/btnBack2"
+                    android:layout_width="@dimen/_13sdp"
+                    android:layout_height="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@drawable/ic_btnback" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Masukkan data baru"
                     android:fontFamily="@font/popsem"
                     android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:textSize="@dimen/_14sdp"
-                    android:layout_marginTop="@dimen/_30sdp"
                     />
 
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/search_barr"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_25sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_below="@+id/tvTitle2"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:focusable="false"
                     android:background="@drawable/content3"
                     app:iconifiedByDefault="false"
                     app:queryBackground="@drawable/content3"
@@ -73,12 +81,23 @@
 
                 />
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcylrBarang"
-                android:padding="@dimen/_16sdp"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcylrBarang"
+                    android:padding="@dimen/_16sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

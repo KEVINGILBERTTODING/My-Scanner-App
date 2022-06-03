@@ -18,7 +18,7 @@
 <!-- Style for searchview   -->
 
     <style name="AppSearchView" parent="Widget.AppCompat.SearchView" >
-        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
         <item name="android:fontFamily">@font/popmed</item>
     </style>
 </resources>
