@@ -87,11 +87,16 @@
                 android:layout_height="wrap_content"
                 >
 
-                <androidx.recyclerview.widget.RecyclerView
+                <com.todkars.shimmer.ShimmerRecyclerView
+                    android:padding="@dimen/_20sdp"
                     android:id="@+id/rcylrBarang"
-                    android:padding="@dimen/_16sdp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:shimmer_recycler_layout="@layout/list_data_template"
+                    app:shimmer_recycler_item_count="10"
+                    />
 
 
 

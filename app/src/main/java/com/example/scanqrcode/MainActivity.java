@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fabAdd;
     private ImageButton btnBack;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private ShimmerRecyclerView mShimmerRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +68,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        setmShimmerRecyclerView();
 
-        layoutManager= new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
 
-        interfaceBarang= DataApi.getClient().create (InterfaceBarang.class);
+        interfaceBarang = DataApi.getClient().create(InterfaceBarang.class);
         tampilkanData();
 
 
@@ -98,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
         btnBack.setOnClickListener(view -> {
             startActivity(new Intent(MainActivity.this, ScanQrCode.class));
         });
-
 
 
     }
@@ -127,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
     }
 
 
@@ -146,8 +143,8 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<BarangModel>> call, Response<List<BarangModel>> response) {
 
                 barangModelList = response.body();
-                barangAdapter= new BarangAdapter(MainActivity.this, barangModelList);
-                recyclerView.setAdapter(barangAdapter);
+                barangAdapter = new BarangAdapter(MainActivity.this, barangModelList);
+                mShimmerRecyclerView.setAdapter(barangAdapter);
                 mSwipeRefreshLayout.setRefreshing(false);
             }
 
@@ -167,20 +164,50 @@ public class MainActivity extends AppCompatActivity {
     private void hideNavbar() {
 
         getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 
     private void initilize() {
-        fabAdd              =   findViewById(R.id.btn_add);
-        recyclerView        =   findViewById(R.id.rcylrBarang);
-        btnBack             =   findViewById(R.id.btnBack2);
-        mSwipeRefreshLayout =   findViewById(R.id.swipeRefresh);
-        searchView          = findViewById(R.id.search_barr);
+        fabAdd = findViewById(R.id.btn_add);
+        btnBack = findViewById(R.id.btnBack2);
+        mSwipeRefreshLayout = findViewById(R.id.swipeRefresh);
+        searchView = findViewById(R.id.search_barr);
+        mShimmerRecyclerView = findViewById(R.id.rcylrBarang);
     }
+
+    private void setmShimmerRecyclerView() {
+
+
+        mShimmerRecyclerView.setAdapter(barangAdapter);
+
+        mShimmerRecyclerView.setLayoutManager(new LinearLayoutManager(this),
+                R.layout.list_data_barang);
+
+        mShimmerRecyclerView.setItemViewType((type, position) -> {
+            switch (type) {
+                case ShimmerRecyclerView.LAYOUT_GRID:
+                    return position % 2 == 0
+                            ? R.layout.list_data_template
+                            : R.layout.list_data_template;
+
+                default:
+                case ShimmerRecyclerView.LAYOUT_LIST:
+                    return position == 0 || position % 2 == 0
+                            ? R.layout.list_data_template
+                            : R.layout.list_data_template;
+            }
+        });
+
+        mShimmerRecyclerView.showShimmer();     // to start showing shimmer
+
+        layoutManager = new LinearLayoutManager(this);
+        mShimmerRecyclerView.setLayoutManager(layoutManager);
+        mShimmerRecyclerView.setHasFixedSize(true);
 
 
     }
+}
 
 
 
