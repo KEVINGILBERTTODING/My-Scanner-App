@@ -63,4 +63,19 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.0'
 
 
+    // Dependencies for retrofit 2 library
+
+    implementation 'com.squareup.okhttp:okhttp:2.4.0'
+
+    // Dependencies for converter GSON
+
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+
+    // Implementation for custom recycler view
+
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation 'com.todkars:shimmer-recyclerview:0.4.1'
+
+
 }

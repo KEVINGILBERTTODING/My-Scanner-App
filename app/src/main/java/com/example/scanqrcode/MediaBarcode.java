@@ -84,6 +84,7 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
 
                                 AlertDialog alertDialog = new AlertDialog.Builder(MediaBarcode.this).create();
                                 alertDialog.setTitle("Hasil Scanning");
+                                alertDialog.setIcon(R.drawable.qr_code2);
                                 DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
                                 alertDialog.setMessage("Kode Barcode : " + kode + "\nNama Barang : " + nama + "\nHarga Barang : " + decimalFormat.format(Double.parseDouble(harga)));
 

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".TambahBarang">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_105sdp"
+            android:id="@+id/frmHeader1"
+            android:background="@drawable/wave">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_16sdp">
+
+                    <ImageButton
+                        android:id="@+id/btnBack"
+                        android:layout_width="@dimen/_13sdp"
+                        android:onClick="btnback"
+                        android:layout_height="@dimen/_13sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@drawable/ic_btnback" />
+
+                    <TextView
+                        android:id="@+id/tvTitle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/btnBack"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:fontFamily="@font/popsem"
+                        android:text="Masukkan data barang"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/frmHeader1"
+            android:layout_marginTop="@dimen/_minus30sdp"
+            android:background="@drawable/container" >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/_16sdp" >
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="Entry data Barang"
+                    android:textSize="@dimen/_14sdp"
+                    android:fontFamily="@font/popsem"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:text="Kode Barang"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_12sdp" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/xkode" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="@dimen/_100sdp"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Barang"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:id="@+id/xnmbrg" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:text="Harga"
+                        android:fontFamily="@font/popmed"
+                        android:textSize="@dimen/_12sdp" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:fontFamily="@font/popmed"
+                        android:id="@+id/xharga" />
+                </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="save "
+                        app:cornerRadius="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_50sdp"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/_12sdp"
+                        android:onClick="simpandata"
+                        android:id="@+id/buttonSave" />
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -13,4 +13,12 @@
         <item name="android:statusBarColor">@color/main</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+<!-- Style for searchview   -->
+
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView" >
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:fontFamily">@font/popmed</item>
+    </style>
 </resources>
