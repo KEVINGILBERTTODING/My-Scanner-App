@@ -29,7 +29,7 @@ public class ScanQrCode extends AppCompatActivity {
         });
 
         fabScan.setOnClickListener(view -> {
-           moveToScanQrCode();
+           moveToReadDataBarang();
         });
 
 
@@ -48,6 +48,10 @@ public class ScanQrCode extends AppCompatActivity {
 
     private void moveToScanQrCode() {
         startActivity(new Intent(getApplicationContext(), MediaBarcode.class));
+    }
+
+    private void moveToReadDataBarang() {
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
 }
