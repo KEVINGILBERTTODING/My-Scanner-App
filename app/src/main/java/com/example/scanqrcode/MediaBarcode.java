@@ -20,6 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.Queue;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -83,7 +84,8 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
 
                                 AlertDialog alertDialog = new AlertDialog.Builder(MediaBarcode.this).create();
                                 alertDialog.setTitle("Hasil Scanning");
-                                alertDialog.setMessage("Kode Barcode : " + kode + "\nNama Barang : " + nama + "\nHarga Barang : " + harga);
+                                DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+                                alertDialog.setMessage("Kode Barcode : " + kode + "\nNama Barang : " + nama + "\nHarga Barang : " + decimalFormat.format(Double.parseDouble(harga)));
 
                                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                                         new DialogInterface.OnClickListener() {
