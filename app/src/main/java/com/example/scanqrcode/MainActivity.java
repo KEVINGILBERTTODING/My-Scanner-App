@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         fabAdd.setColorFilter(getResources().getColor(R.color.white));
 
-        // Method saat dilakukan refresh
+
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -207,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 }
 
 

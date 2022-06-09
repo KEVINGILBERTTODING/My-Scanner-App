@@ -2,8 +2,12 @@ package com.example.scanqrcode;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -38,6 +42,16 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
 
         mScannerView = new ZXingScannerView(this);
         setContentView(mScannerView);
+
+        cameraPermission(); //meminta permission untuk menggunakan camera
+
+    }
+
+    private void cameraPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_DENIED)
+
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, 1);
     }
 
     @Override

@@ -30,11 +30,12 @@ public class TambahBarang extends AppCompatActivity {
         xhrg_brg = findViewById(R.id.xharga);
         interfaceBarang = DataApi.getClient().create(InterfaceBarang.class);
     }
+
+
     public void simpandata(View view) {
         String kode_brg = xkd_brg.getText().toString();
         String nama_brg = xnm_brg.getText().toString();
         String harga_brg = xhrg_brg.getText().toString();
-
 
         Call<BarangModel> postBarang = interfaceBarang.postBarang(kode_brg,
                 nama_brg, harga_brg);
@@ -44,8 +45,10 @@ public class TambahBarang extends AppCompatActivity {
                     response) {
                 Toast.makeText(TambahBarang.this, "Save data Success",
                         Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(TambahBarang.this,MainActivity.class);
+                Intent intent = new Intent(TambahBarang.this,MainActivity.class);
                 startActivity(intent);
+
+
             }
             @Override
             public void onFailure(Call<BarangModel> call, Throwable t) {

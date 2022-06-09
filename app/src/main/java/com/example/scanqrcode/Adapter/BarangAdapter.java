@@ -37,14 +37,12 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.MyViewHold
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_data_barang, parent,
                         false);
 
-
         return new MyViewHolder(view);
     }
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position)
     {
 
-        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
 
         holder.kd_brg.setText(barangModels.get(position).getKode());
         holder.nm_brg.setText(barangModels.get(position).getNama());
