@@ -15,7 +15,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_180sdp"
-            android:background="@drawable/wave">
+            android:background="@color/main">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
