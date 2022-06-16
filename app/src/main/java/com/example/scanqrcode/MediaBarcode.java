@@ -18,6 +18,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.Result;
 
 import org.json.JSONArray;
@@ -25,6 +28,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Queue;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -35,6 +40,11 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
      String kode = "";
      String nama="";
      String harga = "";
+
+
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("Daftar Barang");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +90,7 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
    // Method untuk memanggil data barang
     
     private void getDataBarang(String result){
-        String url="http://192.168.11.19/qrcode/cari_qrcode.php?kode="+result;
+        String url="http://172.20.10.3/qrcode/cari_qrcode.php?kode="+result;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.PUT,url,null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -95,6 +105,11 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
                                 kode = jsonobject.getString("kode");
                                 nama = jsonobject.getString("nama_barang");
                                 harga = jsonobject.getString("harga");
+                                Date currentTime = Calendar.getInstance().getTime();
+
+
+
+
 
                                 AlertDialog alertDialog = new AlertDialog.Builder(MediaBarcode.this).create();
                                 alertDialog.setTitle("Hasil Scanning");
@@ -106,6 +121,10 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 dialog.dismiss();
+                                                tambahData(kode, nama, harga, currentTime);
+
+
+
                                                 finish();
                                             }
                                         });
@@ -127,6 +146,17 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
+    }
+
+
+    private void tambahData(String kode, String nama, String harga, Date currentTime) {
+        String key = myRef.push().getKey();
+
+        myRef.child(key).child("kode").setValue(kode);
+        myRef.child(key).child("nama").setValue(nama);
+        myRef.child(key).child("harga").setValue(harga);
+        myRef.child(key).child("tanggal").setValue(currentTime);
+        Toast.makeText(MediaBarcode.this, "Berhasil menambahkan data ke firebase", Toast.LENGTH_LONG).show();
     }
 
 }
