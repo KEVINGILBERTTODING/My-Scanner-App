@@ -28,8 +28,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Queue;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -101,14 +103,13 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
 
 
                                 JSONObject jsonobject = jsonArray.getJSONObject(i);
-
                                 kode = jsonobject.getString("kode");
                                 nama = jsonobject.getString("nama_barang");
                                 harga = jsonobject.getString("harga");
-                                Date currentTime = Calendar.getInstance().getTime();
 
-
-
+                                // Mengambil tanggal dan waktu saat ini
+                                String tanggal = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                                String waktu = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
 
 
                                 AlertDialog alertDialog = new AlertDialog.Builder(MediaBarcode.this).create();
@@ -121,9 +122,7 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 dialog.dismiss();
-                                                tambahData(kode, nama, harga, currentTime);
-
-
+                                                tambahData(kode, nama, harga, tanggal, waktu);
 
                                                 finish();
                                             }
@@ -149,13 +148,14 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
     }
 
 
-    private void tambahData(String kode, String nama, String harga, Date currentTime) {
+    private void tambahData(String kode, String nama, String harga, String tanggal, String waktu ) {
         String key = myRef.push().getKey();
 
         myRef.child(key).child("kode").setValue(kode);
         myRef.child(key).child("nama").setValue(nama);
         myRef.child(key).child("harga").setValue(harga);
-        myRef.child(key).child("tanggal").setValue(currentTime);
+        myRef.child(key).child("tanggal").setValue(tanggal);
+        myRef.child(key).child("Time").setValue(waktu);
         Toast.makeText(MediaBarcode.this, "Berhasil menambahkan data ke firebase", Toast.LENGTH_LONG).show();
     }
 
